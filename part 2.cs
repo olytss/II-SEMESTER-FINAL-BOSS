@@ -29,6 +29,7 @@ namespace meow
                         break;
 
                     case ConsoleKey.D4:
+                    System.Console.WriteLine($"Number of Technical Team: {TechnicalTeam.TechTeamMembers()}");
                         break;
                     default:
                         continue;
@@ -224,6 +225,14 @@ namespace meow
             this.Surname = surname;
             this.Department = department;
             this.Salary = salary;
+        }
+    static public int TechTeamMembers()
+        {
+            IEnumerable<Team> technicalTeam =
+            from team in TeamList
+            where team.Department == "Technical Team"
+            select team;
+            return technicalTeam.Count();
         }
     }
 
